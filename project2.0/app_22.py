@@ -19,7 +19,7 @@ def process_audio_data():
 
     text=speech2text(temp_audio.name)
     client = Groq(
-    api_key="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"
+    api_key="GROQ_API"
     )
     chat_completion = client.chat.completions.create(
         messages=[
