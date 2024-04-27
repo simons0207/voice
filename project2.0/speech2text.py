@@ -1,7 +1,4 @@
-
-
 import os
-
 
 from deepgram import (
     DeepgramClient,
@@ -10,15 +7,13 @@ from deepgram import (
 )
 
 
-
-
-API_KEY = os.getenv("DG_API_KEY")
+# Path to the audio file
 
 
 def speech2text(audio_file):
     try:
         # STEP 1 Create a Deepgram client using the API key
-        deepgram = DeepgramClient(API_KEY)
+        deepgram = DeepgramClient("79c26e7a4629dd68ee5d7771cbe1c6fab368a21a")
 
         with open(audio_file, "rb") as file:
             buffer_data = file.read()
@@ -36,12 +31,8 @@ def speech2text(audio_file):
         # STEP 3: Call the transcribe_file method with the text payload and options
         response = deepgram.listen.prerecorded.v("1").transcribe_file(payload, options)
 
-        transcript=response['results']['channels'][0]['alternatives'][0]['transcript']
-        
-        return(transcript)
-
-        # STEP 4: Print the response
-        print(response.to_json(indent=4))
+        transcript = response["results"]["channels"][0]["alternatives"][0]["transcript"]
+        return (transcript)
 
     except Exception as e:
         print(f"Exception: {e}")

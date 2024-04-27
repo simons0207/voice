@@ -1,21 +1,19 @@
 import os
 
-
 from deepgram import (
     DeepgramClient,
     SpeakOptions,
 )
- 
 
 
-filename = "output.wav"
+filename = "output_test.wav"
 
 
 def text2speech(text):
     try:
-        SPEAK_OPTIONS = {"text": text}
         # STEP 1: Create a Deepgram client using the API key from environment variables
-        deepgram = DeepgramClient(api_key=os.getenv("DG_API_KEY"))
+        SPEAK_OPTIONS = {"text": text}
+        deepgram = DeepgramClient("79c26e7a4629dd68ee5d7771cbe1c6fab368a21a")
 
         # STEP 2: Configure the options (such as model choice, audio configuration, etc.)
         options = SpeakOptions(
